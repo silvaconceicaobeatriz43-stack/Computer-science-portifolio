@@ -1,0 +1,807 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:wght@400;600;700&display=swap');
+
+/* 1. CONFIGURAÇÕES GERAIS */
+
+:root {
+    --background: #211719;
+    --burgundy: #651B24;
+    --burgundy-dark: #321D20;
+    --gold: #C49A45;
+    --gold-light: #E2C47E;
+    --parchment: #E9DDC5;
+    --muted: #C8BDB2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at top, #42252A 0%, transparent 55%),
+        var(--background);
+    color: var(--parchment);
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Cinzel', Georgia, serif;
+    color: var(--gold-light);
+    line-height: 1.3;
+}
+
+a {
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+/* 2. CABEÇALHO */
+
+header {
+    width: 100%;
+    padding: 22px 7%;
+    background: rgba(33, 23, 25, 0.97);
+    border-bottom: 1px solid rgba(196, 154, 69, 0.45);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    position: relative;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* 3. INÍCIO */
+
+.hero {
+    min-height: 78vh;
+    padding: 100px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background:
+        linear-gradient(
+            rgba(33, 23, 25, 0.45),
+            rgba(33, 23, 25, 0.9)
+        ),
+        radial-gradient(
+            ellipse at center,
+            #71313A 0%,
+            #321D20 65%,
+            #211719 100%
+        );
+    border-bottom: 1px solid rgba(196, 154, 69, 0.35);
+}
+
+.hero::before,
+.hero::after {
+    content: "❦";
+    position: absolute;
+    color: var(--gold);
+    font-size: 45px;
+    opacity: 0.7;
+}
+
+.hero::before {
+    top: 35px;
+    left: 7%;
+}
+
+.hero::after {
+    bottom: 35px;
+    right: 7%;
+}
+
+.hero h1 {
+    max-width: 900px;
+    font-size: clamp(32px, 6vw, 65px);
+    letter-spacing: 3px;
+    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.6);
+}
+
+.hero p {
+    max-width: 650px;
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 21px;
+}
+
+/* 4. SEÇÕES */
+
+.about,
+.projects,
+#contact {
+    padding: 90px 9%;
+    position: relative;
+}
+
+.about h2,
+.projects h2,
+#contact h2 {
+    text-align: center;
+    font-size: clamp(25px, 4vw, 38px);
+    margin-bottom: 35px;
+    letter-spacing: 2px;
+}
+
+.about p {
+    max-width: 850px;
+    margin: 0 auto;
+    color: var(--muted);
+    text-align: center;
+    font-size: 20px;
+}
+
+.about h2::after,
+.projects h2::after,
+#contact h2::after {
+    content: " ─── ❦ ─── ";
+    display: block;
+    color: var(--gold);
+    font-size: 18px;
+    margin-top: 12px;
+}
+
+/* 5. CARTÕES DOS PROJETOS */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* CORREÇÃO: O LINK TAMBÉM PRECISA OCUPAR A COLUNA */
+
+.project-grid > a {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 350px;
+    height: 100%;
+    padding: 100px 30px 40px;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    text-align: center;
+
+    background: linear-gradient(
+        160deg,
+        #51252B,
+        #321D20 75%
+    );
+
+    clip-path: polygon(
+        50% 0%,
+        65% 5%,
+        78% 13%,
+        89% 26%,
+        96% 42%,
+        98% 55%,
+        98% 100%,
+        2% 100%,
+        2% 55%,
+        4% 42%,
+        11% 26%,
+        22% 13%,
+        35% 5%
+    );
+
+    transition: transform 0.35s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: 13px;
+    z-index: 0;
+    border: 1px solid rgba(226, 196, 126, 0.75);
+    pointer-events: none;
+}
+
+.project-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.window-ornament {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold-light);
+    font-size: 38px;
+    line-height: 1;
+    text-shadow: 0 0 12px rgba(196, 154, 69, 0.5);
+}
+
+.project-card h3 {
+    font-size: 19px;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.project-card p {
+    color: var(--muted);
+    font-size: 17px;
+}
+
+/* 6. GALERIA */
+
+.gallery {
+    margin-top: 100px;
+}
+
+.gallery h2 {
+    text-align: center;
+    font-size: clamp(25px, 4vw, 36px);
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.gallery-item {
+    min-width: 0;
+    padding: 18px;
+    position: relative;
+    text-align: center;
+    background: linear-gradient(
+        145deg,
+        #51252B,
+        #321D20
+    );
+    border: 1px solid var(--gold);
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.35),
+        inset 0 0 15px rgba(196, 154, 69, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-6px);
+}
+
+.gallery-item::before {
+    content: "❦";
+    display: block;
+    color: var(--gold);
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.gallery-item::after {
+    content: "❦";
+    display: block;
+    color: var(--gold);
+    font-size: 25px;
+    margin-top: 8px;
+}
+
+.gallery-item img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border: 1px solid rgba(226, 196, 126, 0.65);
+    margin: 15px 0;
+}
+
+.gallery-item h3 {
+    font-size: 17px;
+    margin-top: 12px;
+}
+
+/* 7. CONTATO */
+
+#contact {
+    text-align: center;
+    background: linear-gradient(
+        180deg,
+        transparent,
+        #321D20
+    );
+    border-top: 1px solid rgba(196, 154, 69, 0.35);
+}
+
+#contact p {
+    color: var(--muted);
+    margin: 12px auto;
+}
+
+/* 8. TABLETS */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 18px 5%;
+        gap: 14px;
+    }
+
+    nav {
+        gap: 16px;
+    }
+
+    nav a {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: minmax(430px, auto);
+    }
+
+    /* O link não pode ficar estreito */
+
+    .project-grid > a {
+        width: 100%;
+        min-width: 0;
+        height: 100%;
+    }
+
+    .project-grid > a .project-card {
+        width: 100%;
+        min-width: 0;
+        height: 100%;
+        min-height: 430px;
+    }
+
+    .project-card {
+        min-height: 430px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .project-card h3 {
+        font-size: 16px;
+    }
+
+    .project-card p {
+        font-size: 15px;
+    }
+
+    /* Terceiro projeto centralizado */
+
+    .project-grid > .project-card:last-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc((100% - 30px) / 2);
+        min-height: 430px;
+    }
+
+    /* Galeria: dois em cima e um centralizado */
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-item:last-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc((100% - 28px) / 2);
+    }
+}
+
+/* 9. CELULARES */
+
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+        justify-content: center;
+        padding: 18px 5%;
+    }
+
+    nav {
+        gap: 15px 20px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    .hero {
+        min-height: 65vh;
+        padding: 75px 7%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .about,
+    .projects,
+    #contact {
+        padding: 65px 7%;
+    }
+
+    /* Projetos em uma coluna */
+
+    .project-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .project-grid > a {
+        width: 100%;
+        height: auto;
+    }
+
+    .project-grid > a .project-card {
+        width: 100%;
+        min-height: 350px;
+    }
+
+    .project-card {
+        min-height: 350px;
+        max-width: 390px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .project-grid > .project-card:last-child {
+        grid-column: auto;
+        width: 100%;
+        max-width: 390px;
+        min-height: 350px;
+    }
+
+    /* Galeria em uma coluna */
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item,
+    .gallery-item:last-child {
+        grid-column: auto;
+        max-width: 430px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .gallery-item img {
+        height: 230px;
+    }
+}
+
+/* =================================
+   10. ACABAMENTO BARROCO DA GALERIA
+================================= */
+
+.gallery-item {
+    border: 3px double var(--gold);
+
+    outline: 1px solid
+        rgba(226, 196, 126, 0.55);
+
+    outline-offset: 4px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 25px
+        rgba(196, 154, 69, 0.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            #51252B,
+            #211719
+        );
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.6),
+        0 0 18px
+        rgba(196, 154, 69, 0.18),
+        inset 0 0 25px
+        rgba(196, 154, 69, 0.15);
+}
+
+/* ORNAMENTOS */
+
+.gallery-item::before,
+.gallery-item::after {
+    color: var(--gold-light);
+    text-shadow:
+        0 0 8px rgba(196, 154, 69, 0.5);
+}
+
+/* MOLDURA DAS IMAGENS */
+
+.gallery-item img {
+    border: 3px double var(--gold-light);
+
+    outline: 1px solid
+        rgba(196, 154, 69, 0.4);
+
+    outline-offset: 3px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.5);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.025);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.6),
+        0 0 12px
+        rgba(196, 154, 69, 0.25);
+}
+
+/* TÍTULOS */
+
+.gallery-item h3 {
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* =================================
+   11. ACABAMENTO BARROCO DOS PROJETOS
+================================= */
+
+.project-card {
+    background:
+        linear-gradient(
+            145deg,
+            #652D35,
+            #321D20 75%,
+            #211719
+        );
+
+    border: 2px solid var(--gold);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 25px
+        rgba(196, 154, 69, 0.12);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* MOLDURA INTERNA */
+
+.project-card::before {
+    inset: 15px;
+
+    border: 2px double var(--gold-light);
+
+    outline: 1px solid
+        rgba(196, 154, 69, 0.45);
+
+    outline-offset: 4px;
+}
+
+/* EFEITO AO PASSAR O CURSOR */
+
+.project-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.6),
+        0 0 18px
+        rgba(196, 154, 69, 0.2);
+}
+
+/* ORNAMENTO SUPERIOR */
+
+.window-ornament {
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 10px rgba(196, 154, 69, 0.6),
+        0 0 20px rgba(196, 154, 69, 0.2);
+}
+
+/* TÍTULOS DOS PROJETOS */
+
+.project-card h3 {
+    color: var(--gold-light);
+
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* DESCRIÇÕES */
+
+.project-card p {
+    color: var(--parchment);
+}
+
+/* =================================
+   ACABAMENTO BARROCO DOS PROJETOS
+================================= */
+
+.project-card {
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.35),
+        inset 0 0 25px rgba(196, 154, 69, 0.08);
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* Ornamento inferior */
+
+.project-card::after {
+    content: "❧";
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #E2C47E;
+    font-size: 34px;
+    opacity: 0.85;
+
+    text-shadow:
+        0 0 8px rgba(196, 154, 69, 0.5);
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Brilho ao passar sobre o cartão */
+
+.project-grid > a:hover .project-card,
+.project-grid > a:focus-visible .project-card {
+    transform: translateY(-8px);
+    filter: brightness(1.12);
+
+    box-shadow:
+        0 18px 35px rgba(0, 0, 0, 0.5),
+        0 0 18px rgba(196, 154, 69, 0.2),
+        inset 0 0 25px rgba(196, 154, 69, 0.12);
+}
+
+/* Destaque na moldura */
+
+.project-grid > a:hover .project-card::before {
+    border-color: #E2C47E;
+}
+
+/* Acessibilidade: respeita quem prefere menos animação */
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card {
+        transition: none;
+    }
+}
+
+/* =====================================
+   MOLDURAS BARROCAS - DETALHES DOURADOS
+===================================== */
+
+.project-card::before {
+    inset: 12px;
+
+    border: 3px double #C49A45;
+
+    background:
+        radial-gradient(
+            circle at 8px 8px,
+            #E2C47E 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at calc(100% - 8px) 8px,
+            #E2C47E 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 8px calc(100% - 8px),
+            #E2C47E 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at calc(100% - 8px) calc(100% - 8px),
+            #E2C47E 0 2px,
+            transparent 3px
+        );
+
+    box-shadow:
+        inset 0 0 12px rgba(196, 154, 69, 0.12);
+
+    pointer-events: none;
+}
+
+/* Brilho delicado nas molduras */
+
+.project-grid > a:hover .project-card::before {
+    border-color: #E2C47E;
+
+    box-shadow:
+        inset 0 0 18px rgba(226, 196, 126, 0.16),
+        0 0 8px rgba(196, 154, 69, 0.15);
+}
+
+/* Transição suave */
+
+.project-card::before {
+    transition:
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
